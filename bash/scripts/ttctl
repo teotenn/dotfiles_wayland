@@ -1,0 +1,49 @@
+#!/bin/bash
+
+
+default() {
+    echo "Wrong argument"
+    exit 1
+}
+
+current_audio() {
+    amixer get Master | awk '$0~/%/{print $5}' | tr -d '[]'
+}
+
+if [ "$1" != "" ]; then
+    case $1 in
+	-a | --audio)
+	    if [ "$2" != "" ]; then
+		case $2 in
+		    -u | --up)
+			amixer sset Master $3%+ && notify-send -c light "$(current_audio)"
+			;;
+		    -d | --down)
+			amixer sset Master $3%- && notify-send -c light "$(current_audio)"
+			;;
+		    *)
+			default
+			;;
+		esac
+	    fi
+	    ;;
+	-b | --brightness)
+	    if [ "$2" != "" ]; then
+		case $2 in
+		    -u | --up)
+			light -A $3 && notify-send -c light "  $(light -G)"
+			;;
+		    -d | --down)
+			light -U $3 && notify-send -c light "  $(light -G)"
+			;;
+		    *)
+			default
+			;;
+		esac
+	    fi
+	    ;;
+	*)
+	    default
+	    ;;
+    esac
+fi
