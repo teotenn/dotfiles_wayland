@@ -1,7 +1,36 @@
 #!/bin/bash
 
+# ================================================================
+#  _______    _______     ____    _______    _______    __    ___
+# |__   __|  |   ____|   / _  \  |__   __|  |   ____|  |  \   | |
+#    | |     |  |__     | | | |     | |     |  |__     |   \  | |
+#    | |     |   __|    | | | |     | |     |   __|    | |\ \ | |
+#    | |     |  |___    | |_| |     | |     |  |___    | | \ \| |
+#    |_|     |______|    \____/     |_|     |______|   |_|  \___|
+# ----------------------------------------------------------------
+# Author: Manuel Teodoro Tenango
+# Email: teotenn@proton.me
+# Repo: https://github.com/teotenn/dotfiles_wayland
+# License: GPL-3
+#
+# My personal control script for audio and brightness
+#
+# Dependencies:
+#  * amixer
+#  * light
+#  * mako - for notifications
+#
+# Usage:
+#  Call `ttctl` followed by `-a/-b` for either audio or brightness
+#    then `-u/-d` for either up/down an the percentage value to change
+#
+# Example to reduce Audio by 50 %
+# `ttctl -a -d 50`
+#
+# ================================================================
+mako &
 
-default() {
+wrarg() {
     echo "Wrong argument"
     exit 1
 }
@@ -22,7 +51,7 @@ if [ "$1" != "" ]; then
 			amixer sset Master $3%- && notify-send -c light "$(current_audio)"
 			;;
 		    *)
-			default
+			wrarg
 			;;
 		esac
 	    fi
@@ -37,13 +66,13 @@ if [ "$1" != "" ]; then
 			light -U $3 && notify-send -c light "  $(light -G)"
 			;;
 		    *)
-			default
+			wrarg
 			;;
 		esac
 	    fi
 	    ;;
 	*)
-	    default
+	    wrarg
 	    ;;
     esac
 fi
