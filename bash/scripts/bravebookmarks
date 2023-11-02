@@ -1,0 +1,48 @@
+#!/usr/bin/julia
+
+# ================================================================
+#  _______    _______     ____    _______    _______    __    ___
+# |__   __|  |   ____|   / _  \  |__   __|  |   ____|  |  \   | |
+#    | |     |  |__     | | | |     | |     |  |__     |   \  | |
+#    | |     |   __|    | | | |     | |     |   __|    | |\ \ | |
+#    | |     |  |___    | |_| |     | |     |  |___    | | \ \| |
+#    |_|     |______|    \____/     |_|     |______|   |_|  \___|
+# ----------------------------------------------------------------
+# Author: Manuel Teodoro Tenango
+# Email: teotenn@proton.me
+# Repo: https://github.com/teotenn/dotfiles_wayland
+# License: GPL-3
+#
+# A wofi bookmarks menu for Brave browser witten in Julia
+#
+# Dependencies:
+#  * Julia
+#  * wofi
+#  * Brave Browser
+#
+# ================================================================
+
+bookm_file = join([homedir(), "/.config/BraveSoftware/Brave-Browser/Default/Bookmarks"])
+raw_file = read(bookm_file, String)
+bookms = replace(raw_file, r"[\,\{\}\[\]]" => "")
+bookms_words = split(bookms, "\"")
+
+IDurls = Vector{Int64}()
+IDnames = Vector{Int64}()
+for i in 1:length(bookms_words)
+    if bookms_words[i] == "type"
+        if bookms_words[i+2] == "url"
+            append!(IDurls, i+6)
+            append!(IDnames, i-2)
+        end
+    end
+end
+
+dict_urls = Dict(bookms_words[IDnames] .=> bookms_words[IDurls])
+books_names = join(bookms_words[IDnames], "\n")
+
+selected = read(pipeline(`echo $books_names`, `wofi --show="dmenu"`), String)
+selected = replace(selected, r"\n" => "")
+chosen_url = dict_urls[selected]
+run(`brave-browser $chosen_url`)
+
