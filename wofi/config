@@ -1,0 +1,11 @@
+style=/home/teoten/Code/dotfiles_wayland/wofi/moonfly.css
+xoffset=660
+yoffset=275
+width=600
+height=500
+always_parse_args=true
+show_all=true
+print_command=true
+layer=overlay
+insensitive=true
+prompt=

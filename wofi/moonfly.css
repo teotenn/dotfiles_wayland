@@ -1,0 +1,65 @@
+/*
+edited from
+https://github.com/lokesh-krishna/dotfiles
+*/
+
+window {
+margin: 0px;
+border: 2px solid #005469;
+border-radius: 25px;
+background-color: #005469;
+font-family: monospace;
+font-size: 16px;
+    opacity: 0.8;
+}
+
+#input {
+margin: 15px;
+border: 1px solid #000304;
+border-radius: 25px;
+color: #ffffff;
+background-color: #000304;
+}
+
+#input image {
+	color: #303030;
+}
+
+#inner-box {
+margin: 3px;
+border: none;
+padding-left: 5px;
+padding-right: 5px;
+border-radius: 20px;
+background-color: #007b9d;
+}
+
+#outer-box {
+margin: 5px;
+border: none;
+background-color: #00171d;
+border-radius: 25px;
+}
+
+#scroll {
+margin: 0px;
+border: none;
+}
+
+#text {
+margin: 5px;
+border: none;
+color: #ffffff;
+} 
+
+#entry:selected {
+	background-color: #80a0ff;
+	font-weight: normal;
+	border-radius: 25px;
+}
+
+#text:selected {
+	background-color: #80a0ff;
+	color: #000304;
+	font-weight: normal;
+}
