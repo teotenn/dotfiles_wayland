@@ -1,0 +1,10 @@
+style=/home/teoten/Code/dotfiles_wayland/wofi/moonfly.css
+width=60%
+height=20%
+show_all=true
+content_halign=center
+allow_images=false
+allow_markup=false
+columns=5
+lines=2
+dmenu-separator=;

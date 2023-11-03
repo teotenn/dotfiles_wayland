@@ -1,0 +1,42 @@
+#!/usr/bin/julia
+
+# ================================================================
+#  _______    _______     ____    _______    _______    __    ___
+# |__   __|  |   ____|   / _  \  |__   __|  |   ____|  |  \   | |
+#    | |     |  |__     | | | |     | |     |  |__     |   \  | |
+#    | |     |   __|    | | | |     | |     |   __|    | |\ \ | |
+#    | |     |  |___    | |_| |     | |     |  |___    | | \ \| |
+#    |_|     |______|    \____/     |_|     |______|   |_|  \___|
+# ----------------------------------------------------------------
+# Author: Manuel Teodoro Tenango
+# Email: teotenn@proton.me
+# Repo: https://github.com/teotenn/dotfiles_wayland
+# License: GPL-3
+#
+# A wofi powermenu witten in Julia
+# It uses slock to lock the system, it can be changed in the dict
+# for any preferable method.
+#
+# ================================================================
+
+desktop = readchomp(`echo $(ENV["DESKTOP_SESSION"])`)
+
+if desktop == "sway"
+    how_to_exit = `swaymsg exit`
+end
+
+options = Dict(
+    "⏻" => `systemctl poweroff`,
+    "⟳" => `systemctl reboot`,
+    "🔒" => `slock`,
+    "⏾" => `systemctl suspend`,
+    "⚠" => how_to_exit,
+)
+
+vct_ops = join(collect(keys(options)), ";")
+uptime = readchomp(`uptime -p`)
+selected = read(pipeline(`echo $vct_ops`, `wofi -d -p "$uptime" -c "/home/teoten/Code/dotfiles_wayland/wofi/hor_conf"`), String)
+selected = replace(selected, r"\n" => "")
+to_execute = options[selected]
+
+run(`$to_execute`)
