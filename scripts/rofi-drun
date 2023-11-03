@@ -1,2 +1,4 @@
 #!/usr/bin/env bash
 rofi -no-lazy-grab -show drun -theme ~/Code/dot_tt/rofi/sidepanel-ubuntu.rasi 
+# wofi --show=drun # wofi can't open gnome apps
+# rofi -show drun # rofi can

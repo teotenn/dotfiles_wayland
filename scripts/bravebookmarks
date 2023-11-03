@@ -41,7 +41,7 @@ end
 dict_urls = Dict(bookms_words[IDnames] .=> bookms_words[IDurls])
 books_names = join(bookms_words[IDnames], "\n")
 
-selected = read(pipeline(`echo $books_names`, `wofi --show="dmenu"`), String)
+selected = read(pipeline(`echo $books_names`, `wofi --show="dmenu" -i`), String)
 selected = replace(selected, r"\n" => "")
 chosen_url = dict_urls[selected]
 run(`brave-browser $chosen_url`)

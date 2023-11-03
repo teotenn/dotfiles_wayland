@@ -100,7 +100,7 @@ if ! shopt -oq posix; then
 fi
 
 # Other paths
-PATH=$PATH:~/Code/dotfiles_wayland/bash/scripts/
+PATH=$PATH:~/Code/dotfiles_wayland/scripts/
 
 # Emacs as editor
 export EDITOR="emacs"
