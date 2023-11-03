@@ -30,10 +30,6 @@ set $menu dmenu_path | dmenu | xargs swaymsg exec --
 include /etc/sway/config-vars.d/*
 
 
-### Output configuration
-exec $dotway/bash/scripts/switch-bgs-swaybg
-
-
 ### Idle configuration
 #
 # Example configuration:
@@ -77,4 +73,7 @@ bar {
 
 # include /etc/sway/config.d/*
 exec mako &
-exec xautolock -time 15 -locker slock
+exec xautolock -time 15 -locker slock &
+
+### Output configuration
+exec $dotway/scripts/switch-bgs-swaybg &
