@@ -7,20 +7,40 @@
 #    | |     |   __|    | | | |     | |     |   __|    | |\ \ | |
 #    | |     |  |___    | |_| |     | |     |  |___    | | \ \| |
 #    |_|     |______|    \____/     |_|     |______|   |_|  \___|
+#
 # ----------------------------------------------------------------
+#
 # Author: Manuel Teodoro Tenango
 # Email: teotenn@proton.me
 # Repo: https://github.com/teotenn/dotfiles_wayland
 # License: GPL-3
 #
 # A wofi powermenu witten in Julia
+#
+# *** USAGE ***
+# About Julia:
+# This script is written in Julia, therefore, an installation of Julia
+# is needed and the executable (or a symbolic link) should be in path
+# of /usr/bin, otherwise change the line on top to your julia.
+#
+# The script was written and tested in Julia Version 1.9.3
+#
+# About the script:
+# Change the var `use_this_conf` to your desired configuration.
+#
 # It uses slock to lock the system, it can be changed in the dict
 # for any preferable method.
 #
+# To exit the current compositor, add methods in the section "Desktop"
+# to the variable `how_to_exit`
+#
 # ================================================================
 
-desktop = readchomp(`echo $(ENV["DESKTOP_SESSION"])`)
+# Path to configuration
+use_this_conf = join([homedir(), "/Code/dotfiles_wayland/wofi/hor_conf"])
 
+# Desktop
+desktop = readchomp(`echo $(ENV["DESKTOP_SESSION"])`)
 if desktop == "sway"
     how_to_exit = `swaymsg exit`
 end
@@ -33,9 +53,11 @@ options = Dict(
     "⚠" => how_to_exit,
 )
 
-vct_ops = join(collect(keys(options)), ";")
 uptime = readchomp(`uptime -p`)
-selected = read(pipeline(`echo $vct_ops`, `wofi -d -p "$uptime" -c "/home/teoten/Code/dotfiles_wayland/wofi/hor_conf"`), String)
+wofi_cmd = `wofi -d -p "$uptime" -c $use_this_conf -O alphabetical`
+
+vct_ops = join(collect(keys(options)), ";")
+selected = read(pipeline(`echo $vct_ops`, wofi_cmd), String)
 selected = replace(selected, r"\n" => "")
 to_execute = options[selected]
 

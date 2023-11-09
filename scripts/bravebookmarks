@@ -15,6 +15,14 @@
 #
 # A wofi bookmarks menu for Brave browser witten in Julia
 #
+# *** USAGE ***
+# About Julia:
+# This script is written in Julia, therefore, an installation of Julia
+# is needed and the executable (or a symbolic link) should be in path
+# of /usr/bin, otherwise change the line on top to your julia.
+#
+# The script was written and tested in Julia Version 1.9.3
+#
 # Dependencies:
 #  * Julia
 #  * wofi
