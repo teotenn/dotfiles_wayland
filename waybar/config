@@ -20,13 +20,13 @@
     "margin": "0 0 0 0",
     //"width": 1350, // Waybar width
     // Choose the order of the modules idle_inhibitor
-    "modules-left": ["sway/workspaces", "sway/window"],
+    "modules-left": ["hyprland/workspaces", "hyprland/window"],
     "modules-center": [],
-    "modules-right": ["sway/language", "backlight", "pulseaudio", "temperature", "memory", "cpu", "battery", "network", "clock"], 
+    "modules-right": ["custom/language", "backlight", "pulseaudio", "temperature", "memory", "cpu", "battery", "network", "clock"], 
     
  // Modules configuration
  
-    "sway/workspaces": {
+    "hyprland/workspaces": {
         "disable-scroll": true,
         "all-outputs": true,
         "format": "{icon}",
@@ -42,6 +42,9 @@
 	"9": "9", // "",
 	"10": "10", // "",
         }
+    },
+    "hyprland/window": {
+        "format": "[ {} ]",
     },
     "sway/window": {
         "format": "[ {app_id} ]",
@@ -137,8 +140,8 @@
         "on-scroll-up": "pamixer -ui 2 && pamixer --get-volume > $SWAYSOCK.wob",
         "on-scroll-down": "pamixer -ud 2 && pamixer --get-volume > $SWAYSOCK.wob"
     },
-    "sway/language": {
-        "format": " {flag}",
-        "on-click": "swaymsg input type:keyboard xkb_switch_layout next",	
+    "custom/language": {
+        "format": " {}",
+        //"on-click": "swaymsg input type:keyboard xkb_switch_layout next",	
     },
 }

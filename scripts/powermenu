@@ -43,6 +43,10 @@ use_this_conf = join([homedir(), "/Code/dotfiles_wayland/wofi/hor_conf"])
 desktop = readchomp(`echo $(ENV["DESKTOP_SESSION"])`)
 if desktop == "sway"
     how_to_exit = `swaymsg exit`
+elseif desktop == "hyprland"
+    how_to_exit = `hyprctl dispatch exit`
+else
+    how_to_exit = `echo "No method"`
 end
 
 options = Dict(
