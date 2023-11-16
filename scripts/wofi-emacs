@@ -32,6 +32,10 @@
 #
 # ================================================================
 
+# Path to configuration
+use_this_conf = join([homedir(), "/Code/dotfiles_wayland/fuzzel/fuzzel.ini"])
+
+# Options
 options = Dict(
     "1. emacsclient" => `emacsclient -c`,
     "2. emacs" => `emacs`,
@@ -45,8 +49,9 @@ options = Dict(
     "9. Start server" => `emacs --daemon`
 )
 
-menu = join(collect(keys(options)), "\n")
-selected = read(pipeline(`echo $menu`, `wofi --show="dmenu" -i -O alphabetical`), String)
+menu = join(sort(collect(keys(options))), "\n")
+#selected = read(pipeline(`echo $menu`, `wofi --show="dmenu" -i -O alphabetical`), String)
+selected = read(pipeline(`echo $menu`, `fuzzel -d -i --config $use_this_conf`), String)
 selected = replace(selected, r"\n" => "")
 to_execute = options[selected]
 

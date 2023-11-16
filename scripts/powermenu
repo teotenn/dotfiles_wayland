@@ -37,31 +37,33 @@
 # ================================================================
 
 # Path to configuration
-use_this_conf = join([homedir(), "/Code/dotfiles_wayland/wofi/hor_conf"])
+#use_this_conf = join([homedir(), "/Code/dotfiles_wayland/wofi/hor_conf"])
+use_this_conf = join([homedir(), "/Code/dotfiles_wayland/fuzzel/powermenu.ini"])
 
 # Desktop
 desktop = readchomp(`echo $(ENV["DESKTOP_SESSION"])`)
 if desktop == "sway"
     how_to_exit = `swaymsg exit`
 elseif desktop == "hyprland"
-    how_to_exit = `hyprctl dispatch exit`
+    how_to_exit = `hyprctl dispatch exit 1`
 else
     how_to_exit = `echo "No method"`
 end
 
 options = Dict(
-    "⏻" => `systemctl poweroff`,
-    "⟳" => `systemctl reboot`,
-    "🔒" => `slock`,
-    "⏾" => `systemctl suspend`,
-    "⚠" => how_to_exit,
+    "⏻ Poweroff" => `systemctl poweroff`,
+    "⟳ Reboot" => `systemctl reboot`,
+    "-> 🔒 Lock" => `slock`,
+    "-> ⏾ Suspend" => `systemctl suspend`,
+    "⚠ Log Out" => how_to_exit,
 )
 
 uptime = readchomp(`uptime -p`)
-wofi_cmd = `wofi -d -p "$uptime" -c $use_this_conf -O alphabetical`
+#launcher_cmd = `wofi -d -p "$uptime" -c $use_this_conf -O alphabetical`
+launcher_cmd = `fuzzel -d -p "$uptime" --config $use_this_conf`
 
-vct_ops = join(collect(keys(options)), ";")
-selected = read(pipeline(`echo $vct_ops`, wofi_cmd), String)
+vct_ops = join(sort(collect(keys(options))), "\n")
+selected = read(pipeline(`echo $vct_ops`, launcher_cmd), String)
 selected = replace(selected, r"\n" => "")
 to_execute = options[selected]
 
