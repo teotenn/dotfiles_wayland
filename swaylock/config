@@ -1,0 +1,64 @@
+ignore-empty-password
+font="Fira Sans Semibold"
+
+clock
+timestr=%R
+datestr=%a, %e of %B
+
+# Add current screenshot as wallpaper
+screenshots
+
+# Add an image as a background 
+# In my setup the current wallpaper (requires wallpaper scripts in /scripts)
+# image=~/.cache/current_wallpaper.jpg
+
+# Fade in time
+fade-in=1
+
+# Effect for background
+# effect-blur=10x3
+# effect-greyscale
+effect-pixelate=3
+
+# Show/Hide indicator circle
+indicator
+
+# smaller indicator
+indicator-radius=200
+indicator-thickness=20
+#indicator-caps-lock=T
+
+# Define all colors
+
+key-hl-color=00171d66
+separator-color=00171d00
+
+inside-color=00171d33
+inside-clear-color=00546900
+inside-caps-lock-color=964B00
+inside-ver-color=00546900
+inside-wrong-color=00546900
+
+ring-color=005469
+ring-clear-color=005469
+ring-caps-lock-color=964B00
+ring-ver-color=005469
+ring-wrong-color=005469
+
+line-color=00171d00
+line-clear-color=005469FF
+line-caps-lock-color=964B00
+line-ver-color=005469FF
+line-wrong-color=005469FF
+
+text-color=ffffff
+text-clear-color=ffffff
+text-ver-color=ffffff
+text-wrong-color=eb4d4b
+
+bs-hl-color=005469
+caps-lock-key-hl-color=964B00
+caps-lock-bs-hl-color=964B00
+disable-caps-lock-text=00171d00
+text-caps-lock-color=005469
+
