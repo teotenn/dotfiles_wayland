@@ -15,7 +15,7 @@
 # Repo: https://github.com/teotenn/dotfiles_wayland
 # License: GPL-3
 #
-# A wofi powermenu witten in Julia
+# A wofi/fuzzel powermenu witten in Julia
 #
 # *** USAGE ***
 # About Julia:
@@ -59,6 +59,7 @@ options = Dict(
 )
 
 uptime = readchomp(`uptime -p`)
+
 #launcher_cmd = `wofi -d -p "$uptime" -c $use_this_conf -O alphabetical`
 launcher_cmd = `fuzzel -d -p "$uptime" --config $use_this_conf`
 

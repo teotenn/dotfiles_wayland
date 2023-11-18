@@ -15,7 +15,8 @@
 # Repo: https://github.com/teotenn/dotfiles_wayland
 # License: GPL-3
 #
-# A wofi emacs menu witten in Julia
+# A rofi-style emacs menu witten in Julia
+# Current version has options to work with fuzzel and wofi
 #
 # *** USAGE ***
 # About Julia:
@@ -50,8 +51,10 @@ options = Dict(
 )
 
 menu = join(sort(collect(keys(options))), "\n")
+
 #selected = read(pipeline(`echo $menu`, `wofi --show="dmenu" -i -O alphabetical`), String)
 selected = read(pipeline(`echo $menu`, `fuzzel -d -i --config $use_this_conf`), String)
+
 selected = replace(selected, r"\n" => "")
 to_execute = options[selected]
 

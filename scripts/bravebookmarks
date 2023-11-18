@@ -13,7 +13,8 @@
 # Repo: https://github.com/teotenn/dotfiles_wayland
 # License: GPL-3
 #
-# A wofi bookmarks menu for Brave browser witten in Julia
+# A rofi-style bookmarks menu for Brave browser witten in Julia
+# Current version can work on either fuzzel and wofi
 #
 # *** USAGE ***
 # About Julia:
@@ -29,6 +30,7 @@
 #  * Brave Browser
 #
 # ================================================================
+
 # Path to configuration
 use_this_conf = join([homedir(), "/Code/dotfiles_wayland/fuzzel/fuzzel.ini"])
 
@@ -51,8 +53,10 @@ end
 dict_urls = Dict(bookms_words[IDnames] .=> bookms_words[IDurls])
 books_names = join(bookms_words[IDnames], "\n")
 
-#selected = read(pipeline(`echo $books_names`, `wofi --show="dmenu" -i`), String)
+# Comment/uncoment wofi or fuzzel
+# selected = read(pipeline(`echo $books_names`, `wofi --show="dmenu" -i`), String)
 selected = read(pipeline(`echo $books_names`, `fuzzel -d -i --config $use_this_conf`), String)
+
 selected = replace(selected, r"\n" => "")
 chosen_url = dict_urls[selected]
 run(`brave-browser $chosen_url`)

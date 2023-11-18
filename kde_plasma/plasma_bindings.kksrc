@@ -393,7 +393,7 @@ kcm-users=
 powerdevilprofilesconfig=
 screenlocker=
 
-[wofi-emacs.desktop][Global Shortcuts]
+[menu-emacs.desktop][Global Shortcuts]
 _launch=Meta+E
 
 [wrofi-scripts.desktop][Global Shortcuts]
