@@ -22,7 +22,7 @@
     // Choose the order of the modules idle_inhibitor
     "modules-left": ["hyprland/workspaces", "hyprland/window"],
     "modules-center": [],
-    "modules-right": ["custom/language", "backlight", "pulseaudio", "temperature", "memory", "cpu", "battery", "network", "clock"], 
+    "modules-right": ["hyprland/language", "backlight", "pulseaudio", "temperature", "memory", "cpu", "battery", "network", "clock"], 
     
  // Modules configuration
  
@@ -140,8 +140,8 @@
         "on-scroll-up": "pamixer -ui 2 && pamixer --get-volume > $SWAYSOCK.wob",
         "on-scroll-down": "pamixer -ud 2 && pamixer --get-volume > $SWAYSOCK.wob"
     },
-    "custom/language": {
+    "hyprland/language": {
         "format": " {}",
-        //"on-click": "swaymsg input type:keyboard xkb_switch_layout next",	
+        "on-click": "hyprctl switchxkblayout bluetooth-keyboard-3.0-keyboard next && hyprctl switchxkblayout at-translated-set-2-keyboard next",	
     },
 }
