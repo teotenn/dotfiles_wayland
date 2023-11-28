@@ -1,0 +1,12 @@
+* PERSONAL CONFIG FILES FOR WAYLAND
+
+This are my personal dotfiles for wayland. The main setup I use is hyprland on debian testing.
+
+* Install hyprland on debian
+
+The installation works with Debian Trixie, although I have it with the more generic "testing" version.
+I guess that after Trixie andwith Hyprland updates it will be a matter of trial and error until somebody wants to maintain an official Debian package.
+
+The list of dependencies I got it from JaKooLit's [[https://github.com/JaKooLit/Debian-Hyprland/blob/main/install-scripts/00-dependencies.sh][script]] although it includes packages for its own dotfiles.
+Recently the official [[https://wiki.hyprland.org/Getting-Started/Installation/][installation guide]] included a list of dependencies for Ubuntu so, it can be cross-referenced for a cleaner installation process.
+Is also this installation guide that I used to install after all the dependencies were present in my system.
