@@ -1,0 +1,20 @@
+#!/bin/bash
+
+# ================================================================
+#  _______    _______     ____    _______    _______    __    ___
+# |__   __|  |   ____|   / _  \  |__   __|  |   ____|  |  \   | |
+#    | |     |  |__     | | | |     | |     |  |__     |   \  | |
+#    | |     |   __|    | | | |     | |     |   __|    | |\ \ | |
+#    | |     |  |___    | |_| |     | |     |  |___    | | \ \| |
+#    |_|     |______|    \____/     |_|     |______|   |_|  \___|
+# ----------------------------------------------------------------
+# Author: Manuel Teodoro Tenango
+# Email: teotenn@proton.me
+# Repo: https://github.com/teotenn/dotfiles_wayland
+# License: GPL-3
+#
+# Personal backup of eridani in stein
+
+rsync -a ~/Documents teoten@$1:/mnt/stein/05eridani/
+rsync -a ~/Pictures teoten@$1:/mnt/stein/05eridani/
+rsync -a ~/.ssh teoten@$1:/mnt/stein/05eridani/
